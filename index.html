@@ -1,400 +1,1056 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaushik Holla | AI/ML Engineer & Builder</title>
+  <meta name="description" content="Senior Data Scientist building production AI systems across LLMs, real-time ML, and voice/NLP.">
+  <meta name="author" content="Kaushik Holla">
 
-  <!-- Custom Title Bar -->
-  <title>Kaushik Holla</title>
+  <meta property="og:title" content="Kaushik Holla | AI/ML Engineer & Builder">
+  <meta property="og:description" content="Senior Data Scientist building production AI systems across LLMs, real-time ML, and voice/NLP.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kaushik-holla.github.io">
+  <meta property="og:image" content="https://kaushik-holla.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kaushik Holla | AI/ML Engineer & Builder">
+  <meta name="twitter:description" content="Senior Data Scientist building production AI systems across LLMs, real-time ML, and voice/NLP.">
+  <meta name="twitter:image" content="https://kaushik-holla.github.io/og-image.png">
 
-  <!-- Bootstrap Core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2306b6d4'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='14' fill='%230a0a0a'%3EKH%3C/text%3E%3C/svg%3E">
 
-  <!-- Custom Fonts -->
-  <script src="https://use.fontawesome.com/4dfd1d7bab.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-  rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-  rel='stylesheet' type='text/css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Plugin CSS -->
-  <link href="css/magnific-popup.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <!-- Theme CSS -->
-  <link href="css/creative.min.css" rel="stylesheet">
+    :root {
+      --bg: #09090b;
+      --bg-raised: #0c0c10;
+      --bg-card: #111116;
+      --bg-card-hover: #16161c;
+      --border: rgba(255, 255, 255, 0.05);
+      --border-hover: rgba(255, 255, 255, 0.1);
+      --text: #fafafa;
+      --text-sec: #a1a1aa;
+      --text-dim: #52525b;
+      --accent: #06b6d4;
+      --accent-2: #8b5cf6;
+      --accent-glow: rgba(6, 182, 212, 0.12);
+      --accent-glow-strong: rgba(6, 182, 212, 0.25);
+      --nav-h: 64px;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
 
-  <!-- Index CSS -->
-  <link href="css/index.css" rel="stylesheet">
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
 
-  <!-- Custom favicon -->
-  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #22d3ee; }
+
+    ::selection { background: rgba(6, 182, 212, 0.25); color: #fff; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(9, 9, 11, 0.7);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      z-index: 100; transition: border-color 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      background: rgba(9, 9, 11, 0.88);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-weight: 800; font-size: 1.1rem; color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim); font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.01em; transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--accent); transform: scaleX(0);
+      transition: transform 0.2s; transform-origin: left;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-sec); }
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-toggle {
+      display: none; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 18px; height: 1.5px; background: var(--text-sec);
+      margin: 5px 0; transition: all 0.3s; border-radius: 2px;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 110px 0; position: relative; }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; width: 20px; height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .section-title {
+      font-size: 2.2rem; font-weight: 700; letter-spacing: -0.035em;
+      margin-bottom: 56px; color: var(--text); line-height: 1.2;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      padding-top: calc(var(--nav-h) + 100px);
+      padding-bottom: 100px;
+      position: relative;
+    }
+    .hero-glow {
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 500px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.06) 0%, rgba(139, 92, 246, 0.03) 40%, transparent 70%);
+      filter: blur(40px);
+    }
+    .hero-hook {
+      font-size: 1rem; font-weight: 500; margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--accent), #22d3ee);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-name {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800; letter-spacing: -0.045em; line-height: 1.05;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #d4d4d8 50%, #a1a1aa 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--text-sec); max-width: 500px;
+      line-height: 1.65; margin-bottom: 36px;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+
+    .social-row { display: flex; gap: 10px; align-items: center; }
+    .social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(255,255,255, 0.03); border: 1px solid var(--border);
+      color: var(--text-dim); transition: all 0.25s;
+    }
+    .social-link:hover {
+      border-color: var(--accent-glow-strong); color: var(--accent);
+      background: var(--accent-glow);
+      box-shadow: 0 0 20px -6px var(--accent-glow-strong);
+    }
+    .social-link svg { width: 17px; height: 17px; fill: currentColor; }
+
+    /* ===== CARDS ===== */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      transition: all 0.35s ease; position: relative;
+    }
+    .card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.5),
+                  0 0 0 1px rgba(255,255,255,0.06);
+      transform: translateY(-3px);
+    }
+
+    .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .card-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card-title {
+      font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .card-desc {
+      color: var(--text-sec); font-size: 0.9rem; line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .tag {
+      font-size: 0.7rem; font-weight: 500; padding: 3px 10px;
+      border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.15);
+      background: rgba(6, 182, 212, 0.06); color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+    .card-outcome {
+      font-size: 0.82rem; color: var(--text-dim); font-style: italic;
+      margin-bottom: 16px; line-height: 1.55;
+    }
+    .card-links { display: flex; gap: 16px; }
+    .card-links a {
+      font-size: 0.82rem; font-weight: 500;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .card-links a svg {
+      width: 12px; height: 12px; fill: currentColor;
+      transition: transform 0.2s;
+    }
+    .card-links a:hover svg { transform: translateX(2px); }
+
+    /* ===== OSS CARDS ===== */
+    .oss-grid { margin-top: 40px; }
+    .oss-label {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 16px;
+    }
+
+    .oss-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      transition: all 0.3s; display: flex; flex-direction: column;
+    }
+    .oss-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .oss-card-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .oss-card-title {
+      font-size: 0.95rem; font-weight: 600; color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .oss-card-link {
+      font-size: 0.72rem; font-weight: 500; color: var(--text-dim);
+      white-space: nowrap; display: flex; align-items: center; gap: 3px;
+      transition: color 0.2s;
+    }
+    .oss-card-link:hover { color: var(--accent); }
+    .oss-card-link svg { width: 12px; height: 12px; fill: currentColor; }
+    .oss-card-desc {
+      font-size: 0.82rem; color: var(--text-sec); line-height: 1.55;
+      margin-bottom: 14px; flex-grow: 1;
+    }
+    .oss-card .card-tags { margin-bottom: 0; }
+    .oss-card .tag { font-size: 0.65rem; }
+
+    /* ===== ARTICLES ===== */
+    .article-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: all 0.3s; display: flex; flex-direction: column;
+    }
+    .article-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .article-pub {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px;
+    }
+    .article-title {
+      font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--text-sec); line-height: 1.5; flex-grow: 1;
+      transition: color 0.2s;
+    }
+    .article-card:hover .article-title { color: var(--text); }
+    .section-footer { margin-top: 32px; }
+    .section-footer a {
+      font-size: 0.85rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    /* ===== TALKS ===== */
+    .talks-list { display: flex; flex-direction: column; }
+    .talk-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 0; border-bottom: 1px solid var(--border);
+    }
+    .talk-item:first-child { padding-top: 0; }
+    .talk-item:last-child { border-bottom: none; }
+
+    .talk-badge {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; padding: 4px 12px; border-radius: 20px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .talk-badge.speaker {
+      background: rgba(6, 182, 212, 0.08); color: var(--accent);
+      border: 1px solid rgba(6, 182, 212, 0.15);
+    }
+    .talk-badge.judge {
+      background: rgba(168, 85, 247, 0.07); color: #a78bfa;
+      border: 1px solid rgba(168, 85, 247, 0.15);
+    }
+    .talk-badge.winner {
+      background: rgba(250, 204, 21, 0.07); color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.15);
+    }
+    .talk-badge.finalist {
+      background: rgba(34, 197, 94, 0.07); color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.15);
+    }
+    .talk-text { font-size: 0.9rem; color: var(--text-sec); line-height: 1.5; }
+    .talk-text strong { color: var(--text); font-weight: 600; }
+
+    /* ===== EXPERIENCE ===== */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      padding: 28px 0 28px 28px; border-left: 1px solid var(--border);
+      position: relative;
+    }
+    .exp-item::before {
+      content: ''; position: absolute; left: -4px; top: 34px;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent);
+    }
+    .exp-item:first-child::before {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow-strong);
+    }
+    .exp-role {
+      font-size: 1.02rem; font-weight: 600; margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+    .exp-org { color: var(--text-sec); font-weight: 400; }
+    .exp-duration {
+      font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px;
+      font-weight: 500; letter-spacing: 0.02em;
+    }
+    .exp-impact { font-size: 0.88rem; color: var(--text-sec); line-height: 1.55; }
+
+    /* ===== TECH ===== */
+    .tech-groups { display: flex; flex-direction: column; gap: 32px; }
+    .tech-group-label {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 12px;
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      font-size: 0.8rem; font-weight: 500; padding: 7px 16px;
+      border-radius: var(--radius-sm); background: var(--bg-card);
+      color: var(--text-sec); border: 1px solid var(--border);
+      transition: all 0.25s;
+    }
+    .tech-tag:hover {
+      border-color: var(--accent-glow-strong); color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    /* ===== EDUCATION ===== */
+    #education { padding-top: 60px; padding-bottom: 40px; }
+    .edu-list { display: flex; flex-direction: column; gap: 14px; }
+    .edu-item { font-size: 0.92rem; color: var(--text-sec); line-height: 1.65; }
+    .edu-item strong { color: var(--text); font-weight: 600; }
+    .edu-highlight {
+      color: var(--accent); font-style: normal; font-size: 0.82rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 80px 0 40px; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-heading {
+      font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .footer-sub {
+      color: var(--text-dim); font-size: 0.9rem; margin-bottom: 28px;
+    }
+    .footer-socials {
+      display: flex; justify-content: center; gap: 10px; margin-bottom: 48px;
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--text-dim); }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      height: 1px; border: none;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ===== HERO CTA ===== */
+    .hero-actions { display: flex; gap: 12px; align-items: center; margin-bottom: 32px; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 10px; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: -0.01em; border: none; cursor: pointer;
+      background: var(--accent); color: var(--bg);
+      transition: all 0.25s; text-decoration: none;
+      box-shadow: 0 0 24px -4px rgba(6, 182, 212, 0.35);
+    }
+    .hero-cta:hover {
+      background: #22d3ee; color: var(--bg);
+      box-shadow: 0 0 32px -2px rgba(6, 182, 212, 0.5);
+      transform: translateY(-1px);
+    }
+    .hero-cta svg { width: 14px; height: 14px; fill: currentColor; transition: transform 0.2s; }
+    .hero-cta:hover svg { transform: translateX(3px); }
+
+    /* ===== CARD VISUALS ===== */
+    .card-visual {
+      width: 100%; height: 140px; border-radius: 10px;
+      margin-bottom: 18px; overflow: hidden; position: relative;
+      background: linear-gradient(135deg, rgba(6,182,212,0.04) 0%, rgba(139,92,246,0.03) 100%);
+      border: 1px solid var(--border);
+    }
+    .card-visual svg { width: 100%; height: 100%; }
+
+    /* ===== ANIMATIONS ===== */
+    /* Default: content visible. JS adds .js to <html>, enabling animations. */
+    .reveal { opacity: 1; transform: none; }
+    .js .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .grid-2 > .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .grid-2 > .reveal:nth-child(3) { transition-delay: 0.12s; }
+    .grid-2 > .reveal:nth-child(4) { transition-delay: 0.18s; }
+    .grid-3 > .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .grid-3 > .reveal:nth-child(3) { transition-delay: 0.12s; }
+
+    .talks-list > .reveal:nth-child(2) { transition-delay: 0.05s; }
+    .talks-list > .reveal:nth-child(3) { transition-delay: 0.1s; }
+    .talks-list > .reveal:nth-child(4) { transition-delay: 0.15s; }
+    .talks-list > .reveal:nth-child(5) { transition-delay: 0.2s; }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; }
+      .hero-cta:hover { transform: none; }
+      .card:hover { transform: none; }
+      .article-card:hover, .oss-card:hover { transform: none; }
+    }
+
+    /* ===== FOCUS & SKIP ===== */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px;
+      background: var(--accent); color: var(--bg); padding: 8px 16px;
+      border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+      z-index: 200; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .social-link:focus-visible {
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+    .nav-toggle:focus-visible {
+      outline-offset: 4px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      section { padding: 80px 0; }
+      .section-title { font-size: 1.65rem; margin-bottom: 40px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+      .nav-links {
+        display: none; position: absolute; top: var(--nav-h);
+        left: 0; right: 0; flex-direction: column;
+        background: rgba(9, 9, 11, 0.96);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        padding: 8px 28px 20px; gap: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-toggle { display: block; }
+
+      .card-visual { height: 110px; }
+      .hero-name { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+      #hero { padding-top: calc(var(--nav-h) + 56px); padding-bottom: 56px; }
+
+      .talk-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .card { padding: 22px; }
+      .social-row { gap: 8px; }
+    }
+  </style>
 </head>
+<body>
 
-<body id="page-top">
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Kaushik Holla</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" 
-              data-toggle="collapse" data-target="#navbarResponsive" 
-              aria-controls="navbarResponsive" aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+  <a href="#hero" class="skip-link">Skip to content</a>
+  <nav role="navigation" aria-label="Main">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">KH</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#work">Work</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#github">GitHub</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" target="_blank" href="https://kaushikholla.blogspot.com/">Blogs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link js-scroll-trigger" target="_blank" href="img/resume.pdf">Resume</a> -->
-            <a class="nav-link js-scroll-trigger" target="_blank" href="https://www.linkedin.com/in/kaushik-holla/details/experience/">Resume</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#tech">Stack</a></li>
+      </ul>
     </div>
   </nav>
 
-  <!-- Header Section -->
-  <header class="masthead text-center text-white d-flex">
-    <div class="container my-auto">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <h1 class="text-uppercase">
-            <strong>Kaushik Holla</strong>
-          </h1>
-          <hr>
-        </div>
-        <div class="col-lg-8 mx-auto">
-          <p class="text-faded mb-5"> Traveler. Blogger. Northeastern University Graduate</p>
-          <p class="text-italic mb-5">
-            Data Scientist 3 at <a class="text-white-link" href="https://www.asurion.com/" class="text-blue" target="_blank">Asurion</a>
-          </p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <main>
 
-  <!-- Education Section -->
-  <section class="bg-primary" id="about">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-8 mx-auto text-center mb-4">
-          <h2 class="section-heading text-white">Education</h2>
-          <hr class="light my-4">
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <p class="hero-hook reveal">I build production AI systems that ship to real users.</p>
+        <h1 class="hero-name reveal">Kaushik<br>Holla</h1>
+        <p class="hero-sub reveal"><strong>Senior Data Scientist</strong> at Red Ventures.<br>MS in Data Science, Northeastern University.</p>
+        <div class="hero-actions reveal">
+          <a href="#projects" class="hero-cta">See my work <svg viewBox="0 0 20 20"><path d="M3 10h12m-4-4 4 4-4 4"/></svg></a>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
-          <i class="fa fa-4x fa-id-card-o text-faded sr-icons"></i>
-          <h3 class="text-white">Degree</h3>
-          <p class="text-faded">Master of Science in Data Science from
-          <a class="text-white-link" href="https://www.northeastern.edu/" class="text-blue" target="_blank">Northeastern University</a></p>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center div-padding-fix mb-4">
-          <i class="fa fa-4x fa-graduation-cap text-faded sr-icons"></i>
-          <h3 class="text-white">Graduation</h3>
-          <p class="text-faded">Graduated in Dec 2021</p>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
-          <i class="fa fa-4x fa-code text-faded sr-icons"></i>
-          <h3 class="text-white">Technologies</h3>
-          <p class="text-faded no-margin">Aws, Python, SQL, Airflow, Shell Scripting, Java </p>
-          <!--<p class="text-faded">Machine Learning, Deep Learning, Natural Language Processing</p> -->
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
-          <i class="fa fa-4x fa-file-code-o text-faded sr-icons"></i>
-          <h3 class="text-white">Skills</h3>
-          <p class="text-faded no-margin">Machine Learning, Deep Learning</p>
-          <p class="text-faded">Natural Language Processing</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#work">Wait There's More!</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work Experience Section. -->
-  <section id="work">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading">Work</h2>
-          <hr class="primary">
-        </div>
-				<div class="col-sm-12 text-center mt-4 mb-4">
-          <i class="fa fa-4x fa-line-chart text-primary sr-icons"></i>
-          <h3 class="mt-4 mb-4">Data Scientist 3</h3>
-          <p class="text-muted">Jan 2022 to Present: <a class="text-white-link" href="https://www.asurion.com/" class="text-blue" target="_blank"><span class="RtnRed">Asurion</span></a></p>
-        </div>
-        <div class="col-lg-3 col-sm-6 text-center">
-          <i class="fa fa-4x fa-file-code-o text-primary sr-icons"></i>
-          <h3 class="mt-4 mb-4">Data Scientist Intern</h3>
-          <p class="text-muted mb-3">May-August 2021: <a class="text-muted" href="https://www.asurion.com/" target="_blank">Asurion</a></p>
-          <p class="text-muted mb-4">Jan-May 2021: <a class="text-muted" href="http://www.hfihealthcare.com" target="_blank">Healthcare Financial, Inc</a></p>
-        </div>
-        <div class="col-lg-3 col-sm-6 text-center">
-          <i class="fa fa-4x fa-cogs text-primary sr-icons"></i>
-          <h3 class="mt-4 mb-4">ML Engineer Intern</h3>
-          <p class="text-muted">May-Aug 2020: <a class="text-muted" href="https://www.dtonomy.com/" target="_blank">Dtonomy</a></p>
-        </div> 
-        <div class="col-lg-3 col-sm-6 text-center">
-          <i class="fa fa-4x fa-flask text-primary sr-icons ml-4"></i>
-          <i class="fa fa-4x fa-book text-primary sr-icons"></i>
-          <h3 class="mt-4 mb-4">Research & Teaching Assistant</h3>
-          <p class="text-muted mb-3">Fall 2021: Teaching Assistant(CS1800)</p>
-          <p class="text-muted mb-4">Fall 2020: Teaching Assistant(DS2000) </p>
-          <p class="text-muted mb-5">Spring 2020: Research Assistant </p>
-        </div>
-        <div class="col-lg-3 col-sm-6 text-center">
-          <i class="fa fa-4x fa-signal text-primary sr-icons"></i>
-          <h3 class="mt-4 mb-4">Senior Software Engineer</h3>
-          <p class="text-muted">Jun 2017 - Aug 2019: <a class="text-muted" href="https://www.subex.com/" target="_blank">Subex</a></p>
-        </div> 
-      </div>
-      <div class="text-center">
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#github">
-        Show me some projects</a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- GitHub Section -->
-  <section class="min-padding-top bg-dark" id="github">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading">
-            <a class="text-white-link" target="_blank" href="https://github.com/kaushik-holla" class="text-orange">GitHub: kaushik-holla
-              <i class="fa fa-1x fa-github-square" style="color:white"></i>
-            </a>
-          </h2>
-          <hr class="light">
-        </div>
-      </div>
-    </div>
-
-    <!-- GitHub links below -->
-    <div class="container-fluid p-0"> 
-      <div class="row no-gutters">
-
-        <!--
-						The Idea is to add 6 projects.
-            For now this is the order.
-            Right now add only university projects 
-            and Update it with more suffosticated projects later
-				-->
-
-        <!-- Source to recommendation system coding -->
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" target="_blank" href="https://github.com/kaushik-holla/Recommender-System-Based-on-Food-Reviews">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/amazon_recommendation.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Recommendation System </b>
-                </div>
-                <div class="project-name text-faded">
-                  Used Matrix Factorization and collaborative filtering methods to suggest products based on users purchase activities. 
-                </div>
-              </div>
-            </div>
+        <div class="social-row reveal">
+          <a href="mailto:kaushikholla@outlook.com" class="social-link" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
           </a>
-        </div>
-
-        <!-- Second Link: Sentiment analysis of News Headlines -->
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" target="_blank" href="https://github.com/kaushik-holla/Sentimental-Analysis-of-Stock-Market-from-News-Headlines-">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/sentiment_analysis.jpeg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Sentiment Analysis of Stock Market </b>
-                </div>
-                <div class="project-name text-faded">
-                  Applied Sentiment Analysis on financial news headlines to predict whether the market is positively or negatively inclined about a stock.
-                </div>
-              </div>
-            </div>
+          <a href="https://linkedin.com/in/kaushik-holla" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.064 2.064 0 110-4.128 2.064 2.064 0 010 4.128zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box"  target="_blank" href="https://github.com/kaushik-holla/Adverse-Reactions-Summarisation">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/summarizing_reactions.jpeg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Summarization </b>
-                </div>
-                <div class="project-name text-faded">
-                  Summarizing the adverse reaction caused by drugs using NLP techniques.
-                </div>
-              </div>
-            </div>
+          <a href="https://github.com/kaushik-holla" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
           </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" target="_blank" href="https://github.com/kaushik-holla/Identifying-phishing-theme-using-Unsupervised-machine-learning-techniques">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/phishing.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Phishing Theme Identification </b>
-                </div>
-                <div class="project-name text-faded">
-                  Using Unsupervised machine learning techniques to identify phishing theme.
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" target=" _blank" href="https://github.com/kaushik-holla/Bank-Marketing">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/Marketing-Analytics.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Marketing Analytics </b>
-                </div>
-                <div class="project-name text-faded">
-                  Analysis and prediction of the outcome of marketing campaigns.
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" target=" _blank" href="https://github.com/kaushik-holla/Health_Insurence_Crosssell_Prediciton">
-            <img class="img-responsive" width="100%" height="auto" src="img/portfolio/cross_sell_prediction.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category">
-                  <b> Cross-sell Prediction </b>
-                </div>
-                <div class="project-name text-faded">
-                  Predicting if the existing customer would be interested in Vehicle Insurance.
-                </div>
-              </div>
-            </div>
+          <a href="https://medium.com/@kholla29" target="_blank" rel="noopener" class="social-link" aria-label="Medium">
+            <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact section -->
-  <section class="min-padding" id="contact">
+    <hr class="section-divider">
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="container">
+        <p class="section-label reveal">Selected Work</p>
+        <h2 class="section-title reveal">What I've Built</h2>
+
+        <div class="grid-2">
+
+          <!-- Cognivvo -->
+          <div class="card reveal">
+            <div class="card-visual" aria-hidden="true">
+              <svg viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="cg1" x1="0" y1="0" x2="480" y2="140" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#06b6d4" stop-opacity="0.15"/>
+                    <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.08"/>
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="140" fill="url(#cg1)" rx="10"/>
+                <g transform="translate(140,20)" opacity="0.7">
+                  <rect x="0" y="40" width="8" height="60" rx="4" fill="#06b6d4" opacity="0.4"/>
+                  <rect x="16" y="25" width="8" height="90" rx="4" fill="#06b6d4" opacity="0.55"/>
+                  <rect x="32" y="10" width="8" height="120" rx="4" fill="#06b6d4" opacity="0.7"/>
+                  <rect x="48" y="20" width="8" height="100" rx="4" fill="#22d3ee" opacity="0.85"/>
+                  <rect x="64" y="5" width="8" height="130" rx="4" fill="#22d3ee"/>
+                  <rect x="80" y="15" width="8" height="110" rx="4" fill="#06b6d4" opacity="0.85"/>
+                  <rect x="96" y="5" width="8" height="130" rx="4" fill="#06b6d4"/>
+                  <rect x="112" y="18" width="8" height="104" rx="4" fill="#22d3ee" opacity="0.8"/>
+                  <rect x="128" y="30" width="8" height="80" rx="4" fill="#06b6d4" opacity="0.6"/>
+                  <rect x="144" y="8" width="8" height="124" rx="4" fill="#22d3ee" opacity="0.9"/>
+                  <rect x="160" y="22" width="8" height="96" rx="4" fill="#06b6d4" opacity="0.7"/>
+                  <rect x="176" y="35" width="8" height="70" rx="4" fill="#06b6d4" opacity="0.45"/>
+                  <rect x="192" y="45" width="8" height="50" rx="4" fill="#06b6d4" opacity="0.3"/>
+                </g>
+                <text x="240" y="130" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="9" letter-spacing="0.1em" font-weight="500">VOICE TO TEXT</text>
+              </svg>
+            </div>
+            <div class="card-header">
+              <div class="card-icon">
+                <img src="cognivvo-icon.png" alt="Cognivvo" loading="lazy">
+              </div>
+              <h3 class="card-title">Cognivvo</h3>
+            </div>
+            <p class="card-desc">A local-first AI assistant that turns voice into polished writing across any app and meetings into structured notes and action items, entirely on-device.</p>
+            <div class="card-tags">
+              <span class="tag">Whisper</span>
+              <span class="tag">Local LLMs</span>
+              <span class="tag">Electron</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+          <!-- Simu -->
+          <div class="card reveal">
+            <div class="card-visual" aria-hidden="true">
+              <svg viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="sg1" x1="0" y1="0" x2="480" y2="140" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8b5cf6" stop-opacity="0.12"/>
+                    <stop offset="1" stop-color="#06b6d4" stop-opacity="0.06"/>
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="140" fill="url(#sg1)" rx="10"/>
+                <g transform="translate(100,26)">
+                  <rect x="0" y="0" width="120" height="88" rx="12" fill="none" stroke="#8b5cf6" stroke-opacity="0.25" stroke-width="1.5"/>
+                  <circle cx="60" cy="36" r="14" fill="none" stroke="#a78bfa" stroke-opacity="0.5" stroke-width="1.2"/>
+                  <path d="M55 36 l4 3 8-7" stroke="#a78bfa" stroke-opacity="0.6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="24" y="62" width="72" height="4" rx="2" fill="#8b5cf6" fill-opacity="0.15"/>
+                  <rect x="36" y="72" width="48" height="3" rx="1.5" fill="#8b5cf6" fill-opacity="0.1"/>
+                  <text x="60" y="102" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="8" letter-spacing="0.08em" font-weight="500">AGENT</text>
+                </g>
+                <g transform="translate(200,50)">
+                  <path d="M0 20 h40" stroke="#52525b" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3"/>
+                  <polygon points="38,16 44,20 38,24" fill="#52525b" fill-opacity="0.3"/>
+                  <path d="M0 24 h40" stroke="#52525b" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 3"/>
+                </g>
+                <g transform="translate(260,26)">
+                  <rect x="0" y="0" width="120" height="88" rx="12" fill="none" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="1.5"/>
+                  <circle cx="60" cy="32" r="8" fill="none" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.2"/>
+                  <path d="M56 46 c0-4 8-4 8 0" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="1.2" fill="none"/>
+                  <path d="M40 58 h40 M40 66 h32 M40 74 h36" stroke="#06b6d4" stroke-opacity="0.15" stroke-width="2" stroke-linecap="round"/>
+                  <text x="60" y="102" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="8" letter-spacing="0.08em" font-weight="500">CUSTOMER</text>
+                </g>
+              </svg>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">AI Call Center Training Simulator</h3>
+            </div>
+            <p class="card-desc">A voice-based AI training system that simulates realistic customer conversations so call center agents can practice on demand.</p>
+            <div class="card-tags">
+              <span class="tag">Speech-to-Text</span>
+              <span class="tag">Text-to-Speech</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">Persona Modeling</span>
+            </div>
+            <p class="card-outcome">Built in 24 hours at a hackathon. Won 1st place. Adopted by multiple business units into production.</p>
+          </div>
+
+          <!-- Propensity -->
+          <div class="card reveal">
+            <div class="card-visual" aria-hidden="true">
+              <svg viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="pg1" x1="0" y1="0" x2="480" y2="140" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#06b6d4" stop-opacity="0.1"/>
+                    <stop offset="1" stop-color="#22c55e" stop-opacity="0.06"/>
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="140" fill="url(#pg1)" rx="10"/>
+                <g transform="translate(60,30)">
+                  <rect x="0" y="0" width="76" height="44" rx="8" fill="none" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="1.2"/>
+                  <text x="38" y="20" text-anchor="middle" fill="#06b6d4" fill-opacity="0.5" font-family="Inter,system-ui" font-size="8" font-weight="600">SCORE</text>
+                  <text x="38" y="35" text-anchor="middle" fill="#06b6d4" fill-opacity="0.7" font-family="Inter,system-ui" font-size="14" font-weight="700">0.87</text>
+                </g>
+                <g transform="translate(156,44)">
+                  <path d="M0 16 h48" stroke="#52525b" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="3 3"/>
+                  <polygon points="46,12 52,16 46,20" fill="#52525b" fill-opacity="0.3"/>
+                </g>
+                <g transform="translate(220,24)">
+                  <path d="M0 46 20 30 40 38 60 20 80 28 100 10 120 18 140 6" stroke="#22c55e" stroke-opacity="0.45" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="140" cy="6" r="3" fill="#22c55e" fill-opacity="0.6"/>
+                  <path d="M0 70 20 65 40 60 60 68 80 55 100 62 120 50 140 56" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="1" fill="none" stroke-dasharray="3 2"/>
+                </g>
+                <g transform="translate(384,30)">
+                  <rect x="0" y="0" width="42" height="44" rx="8" fill="none" stroke="#22c55e" stroke-opacity="0.3" stroke-width="1.2"/>
+                  <text x="21" y="16" text-anchor="middle" fill="#22c55e" fill-opacity="0.5" font-family="Inter,system-ui" font-size="7" font-weight="600">TOP</text>
+                  <circle cx="14" cy="30" r="5" fill="none" stroke="#22c55e" stroke-opacity="0.35" stroke-width="1"/>
+                  <circle cx="28" cy="30" r="5" fill="none" stroke="#22c55e" stroke-opacity="0.35" stroke-width="1"/>
+                </g>
+                <text x="240" y="130" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="9" letter-spacing="0.1em" font-weight="500">SCORE &rarr; RANK &rarr; ROUTE</text>
+              </svg>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Real-Time Propensity Scoring & Smart Routing</h3>
+            </div>
+            <p class="card-desc">An end-to-end ML system for real-time call scoring that routes high-propensity customers to top-performing agents.</p>
+            <div class="card-tags">
+              <span class="tag">LGBM</span>
+              <span class="tag">CatBoost</span>
+              <span class="tag">Databricks Model Serving</span>
+              <span class="tag">MLflow</span>
+            </div>
+            <p class="card-outcome">Serving 30K+ calls daily. Drove ~$22M in incremental revenue at Red Ventures and $17M at Asurion.</p>
+          </div>
+
+          <!-- Sales Coaching -->
+          <div class="card reveal">
+            <div class="card-visual" aria-hidden="true">
+              <svg viewBox="0 0 480 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="lp1" x1="0" y1="0" x2="480" y2="140" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#facc15" stop-opacity="0.08"/>
+                    <stop offset="1" stop-color="#06b6d4" stop-opacity="0.06"/>
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="140" fill="url(#lp1)" rx="10"/>
+                <g transform="translate(48,24)">
+                  <rect x="0" y="0" width="90" height="56" rx="8" fill="none" stroke="#facc15" stroke-opacity="0.25" stroke-width="1.2"/>
+                  <path d="M14 18 h62 M14 28 h50 M14 38 h56 M14 48 h40" stroke="#facc15" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
+                  <text x="45" y="72" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="7" letter-spacing="0.06em" font-weight="500">TRANSCRIPT</text>
+                </g>
+                <g transform="translate(158,42)">
+                  <path d="M0 16 h30" stroke="#52525b" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 3"/>
+                  <polygon points="28,12 34,16 28,20" fill="#52525b" fill-opacity="0.25"/>
+                </g>
+                <g transform="translate(200,24)">
+                  <rect x="0" y="0" width="80" height="56" rx="8" fill="none" stroke="#06b6d4" stroke-opacity="0.25" stroke-width="1.2"/>
+                  <text x="40" y="24" text-anchor="middle" fill="#06b6d4" fill-opacity="0.45" font-family="Inter,system-ui" font-size="8" font-weight="600">LLM</text>
+                  <text x="40" y="36" text-anchor="middle" fill="#06b6d4" fill-opacity="0.45" font-family="Inter,system-ui" font-size="8" font-weight="600">AGENT</text>
+                  <circle cx="24" cy="48" r="2" fill="#06b6d4" fill-opacity="0.3"/>
+                  <circle cx="36" cy="48" r="2" fill="#06b6d4" fill-opacity="0.5"/>
+                  <circle cx="48" cy="48" r="2" fill="#06b6d4" fill-opacity="0.7"/>
+                  <circle cx="60" cy="48" r="2" fill="#06b6d4" fill-opacity="0.3"/>
+                  <text x="40" y="72" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="7" letter-spacing="0.06em" font-weight="500">EXTRACT</text>
+                </g>
+                <g transform="translate(300,42)">
+                  <path d="M0 16 h30" stroke="#52525b" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 3"/>
+                  <polygon points="28,12 34,16 28,20" fill="#52525b" fill-opacity="0.25"/>
+                </g>
+                <g transform="translate(342,24)">
+                  <rect x="0" y="0" width="90" height="56" rx="8" fill="none" stroke="#22c55e" stroke-opacity="0.25" stroke-width="1.2"/>
+                  <circle cx="20" cy="20" r="6" fill="none" stroke="#22c55e" stroke-opacity="0.35" stroke-width="1.2"/>
+                  <path d="M17 20 l2 2 4-4" stroke="#22c55e" stroke-opacity="0.5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M34 18 h42 M34 26 h30" stroke="#22c55e" stroke-opacity="0.15" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="20" cy="42" r="6" fill="none" stroke="#22c55e" stroke-opacity="0.35" stroke-width="1.2"/>
+                  <path d="M17 42 l2 2 4-4" stroke="#22c55e" stroke-opacity="0.5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M34 40 h38 M34 48 h28" stroke="#22c55e" stroke-opacity="0.15" stroke-width="2" stroke-linecap="round"/>
+                  <text x="45" y="72" text-anchor="middle" fill="#52525b" font-family="Inter,system-ui" font-size="7" letter-spacing="0.06em" font-weight="500">QA OUTPUT</text>
+                </g>
+              </svg>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">LLM-Powered Sales Coaching Pipeline</h3>
+            </div>
+            <p class="card-desc">Agentic LLM pipeline that extracts sales pitches and product details from call transcripts, automating manual QA and enabling scalable coaching.</p>
+            <div class="card-tags">
+              <span class="tag">LangChain</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">GPT-4o</span>
+              <span class="tag">Pydantic v2</span>
+            </div>
+            <p class="card-outcome">Production system processing thousands of transcripts with automated guardrails, batch controls, and quality checks.</p>
+          </div>
+
+        </div>
+
+        <!-- Open Source -->
+        <div class="oss-grid">
+          <p class="oss-label reveal">Open Source & Side Projects</p>
+          <div class="grid-3">
+
+            <div class="oss-card reveal">
+              <div class="oss-card-head">
+                <h3 class="oss-card-title">Data Analyst Agent</h3>
+                <a href="https://github.com/kaushik-holla/Data-Analyst_agent" target="_blank" rel="noopener" class="oss-card-link">
+                  <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+              <p class="oss-card-desc">An autonomous AI agent that analyzes datasets, generates insights, and creates visualizations with natural language queries.</p>
+              <div class="card-tags">
+                <span class="tag">Python</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">OpenAI</span>
+              </div>
+            </div>
+
+            <div class="oss-card reveal">
+              <div class="oss-card-head">
+                <h3 class="oss-card-title">Gen-AI Merchant Matching</h3>
+                <a href="https://github.com/kaushik-holla/Gen-AI-Merchant-Matching" target="_blank" rel="noopener" class="oss-card-link">
+                  <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+              <p class="oss-card-desc">Generative AI-powered system for intelligent merchant name matching and entity deduplication at scale.</p>
+              <div class="card-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Gen AI</span>
+                <span class="tag">NLP</span>
+              </div>
+            </div>
+
+            <div class="oss-card reveal">
+              <div class="oss-card-head">
+                <h3 class="oss-card-title">PactProof</h3>
+                <a href="https://github.com/kaushik-holla/PactProof-Compliance-Invoice-Reconciliation" target="_blank" rel="noopener" class="oss-card-link">
+                  <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </div>
+              <p class="oss-card-desc">AI-powered compliance and invoice reconciliation tool for automated contract verification and auditing.</p>
+              <div class="card-tags">
+                <span class="tag">Python</span>
+                <span class="tag">AI Agents</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== WRITING ===== -->
+    <section id="writing">
+      <div class="container">
+        <p class="section-label reveal">Articles</p>
+        <h2 class="section-title reveal">Writing</h2>
+        <div class="grid-2">
+          <a href="https://medium.com/ai-ml-and-beyond/beyond-vibe-coding-building-smarter-ai-with-context-engineering-1fa68f63fb0b" target="_blank" rel="noopener" class="article-card reveal">
+            <span class="article-pub">AI ML and Beyond</span>
+            <span class="article-title">Beyond Vibe Coding: Building Smarter AI with Context Engineering</span>
+          </a>
+          <a href="https://medium.com/ai-ml-and-beyond/i-built-a-prd-generator-using-ai-agents-and-vibe-coded-the-frontend-6e6aa4febdbc" target="_blank" rel="noopener" class="article-card reveal">
+            <span class="article-pub">AI ML and Beyond</span>
+            <span class="article-title">I Built a PRD Generator Using AI Agents and Vibe Coded the Frontend</span>
+          </a>
+          <a href="https://medium.com/towards-artificial-intelligence/why-us-a-simple-prompt-framework-for-high-impact-and-consistent-results-from-llms-08590d3b7ac2" target="_blank" rel="noopener" class="article-card reveal">
+            <span class="article-pub">Towards AI</span>
+            <span class="article-title">WHY-Us: A Simple Prompt Framework for High Impact and Consistent Results from LLMs</span>
+          </a>
+          <a href="https://medium.com/data-science-collective/when-similar-is-useless-why-the-ai-industry-is-pivoting-beyond-vector-search-e4f65cf11f65" target="_blank" rel="noopener" class="article-card reveal">
+            <span class="article-pub">Data Science Collective</span>
+            <span class="article-title">When "Similar" is Useless: Why the AI Industry is Pivoting Beyond Vector Search</span>
+          </a>
+        </div>
+        <div class="section-footer reveal">
+          <a href="https://medium.com/@kholla29" target="_blank" rel="noopener">View all articles &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== TALKS ===== -->
+    <section id="talks">
+      <div class="container">
+        <p class="section-label reveal">Public</p>
+        <h2 class="section-title reveal">Talks & Recognition</h2>
+        <div class="talks-list">
+          <div class="talk-item reveal">
+            <span class="talk-badge speaker">Speaker</span>
+            <span class="talk-text"><strong>"LLM-as-a-Judge"</strong> at Data Science Salon, S&amp;P Global, NYC · <a href="https://www.youtube.com/watch?v=w2Dp7pCNn9s&list=PLHfn6gOejF0SiYN9iC8QnMbdl8Es7qrr9&index=2&t=6s" target="_blank" rel="noopener">Watch Talk &rarr;</a></span>
+          </div>
+          <div class="talk-item reveal">
+            <span class="talk-badge speaker">Speaker</span>
+            <span class="talk-text"><strong>"LLM-as-a-Judge"</strong> at ABD Society, Charlotte</span>
+          </div>
+          <div class="talk-item reveal">
+            <span class="talk-badge judge">Judge</span>
+            <span class="talk-text"><strong>ASA DataFest Hackathon</strong> at Wake Forest University (2026)</span>
+          </div>
+          <div class="talk-item reveal">
+            <span class="talk-badge winner">Winner</span>
+            <span class="talk-text"><strong>Red Ventures AI Hackathon</strong> (2025) · 1st Place</span>
+          </div>
+          <div class="talk-item reveal">
+            <span class="talk-badge finalist">Finalist</span>
+            <span class="talk-text"><strong>NYC Financial Hackathon</strong> (2025) · Top 6</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+      <div class="container">
+        <p class="section-label reveal">Career</p>
+        <h2 class="section-title reveal">Experience</h2>
+        <div class="exp-list">
+          <div class="exp-item reveal">
+            <div class="exp-role">Senior Data Scientist <span class="exp-org">at Red Ventures</span></div>
+            <div class="exp-duration">Nov 2024 · Present</div>
+            <p class="exp-impact">LLM pipelines, real-time ML systems, and MLOps at scale.</p>
+          </div>
+          <div class="exp-item reveal">
+            <div class="exp-role">Data Scientist 3 <span class="exp-org">at Asurion</span></div>
+            <div class="exp-duration">Jan 2022 · Nov 2024</div>
+            <p class="exp-impact">Sales routing, virtual assistant, and time-series forecasting systems driving $17M+ in revenue.</p>
+          </div>
+          <div class="exp-item reveal">
+            <div class="exp-role">Senior Software Engineer <span class="exp-org">at Subex</span></div>
+            <div class="exp-duration">Jun 2017 · Aug 2019</div>
+            <p class="exp-impact">Fraud detection system using XGBoost, reducing fraud by 37%.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="tech">
+      <div class="container">
+        <p class="section-label reveal">Tools</p>
+        <h2 class="section-title reveal">Tech Stack</h2>
+        <div class="tech-groups">
+          <div class="reveal">
+            <div class="tech-group-label">LLM & Agents</div>
+            <div class="tech-tags">
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">GPT-4o</span>
+              <span class="tech-tag">Whisper</span>
+              <span class="tech-tag">Llama</span>
+              <span class="tech-tag">RAG</span>
+              <span class="tech-tag">Prompt Engineering</span>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="tech-group-label">ML & Data</div>
+            <div class="tech-tags">
+              <span class="tech-tag">CatBoost</span>
+              <span class="tech-tag">XGBoost</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">MLflow</span>
+              <span class="tech-tag">Databricks</span>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="tech-group-label">Infrastructure</div>
+            <div class="tech-tags">
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">SageMaker</span>
+              <span class="tech-tag">Lambda</span>
+              <span class="tech-tag">EC2</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Electron</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">PySpark</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <div class="container">
+        <p class="section-label reveal">Education</p>
+        <div class="edu-list">
+          <p class="edu-item reveal"><strong>MS in Data Science</strong>, Northeastern University, Boston (Dec 2021). <span class="edu-highlight">Khoury Graduate Fellowship for Excellence in Research.</span></p>
+          <p class="edu-item reveal"><strong>BE in Computer Science</strong>, Dr. Ambedkar Institute of Technology, Bangalore (Jun 2017)</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" role="contentinfo">
     <div class="container">
-    
-      <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-          <h2 class="section-heading">
-          
-            Kaushik Holla</h2>
-          <hr class="primary">
-          <p>If you would like to get in touch with me or have any interesting opportunity in the field of <strong>Data Science</strong>, Please reachout using the below form and I will get back to you</p>
-          
-          <!-- Really avoiding spam by sending emails to the spam box
-               Docs URL: https://formspree.io/ 
-               Also, Bootstrap forms: https://getbootstrap.com/docs/3.3/css/#forms -->
-    
-			<form action="https://formspree.io/f/xqkvkzeb" method="POST" class="form-horizontal" role="form">
-            <!-- The URL is unique and the messages comes to my inbox if used. Please replace it with the 
-            one you generate on formspree. Please remove this before testing the code -->
-	
-		
-	 <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Your Email" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <textarea name="message" placeholder="Your message" class="form-control"></textarea>
-            </div>
-		
-	 <div class="form-group">
-              <input type="submit" value="Email Kaushik" class="btn btn-primary btn-xl">
-            </div>
-          </form>
-        </div>
+      <h2 class="footer-heading reveal">Let's connect</h2>
+      <p class="footer-sub reveal">Always open to interesting conversations.</p>
+      <div class="footer-socials reveal">
+        <a href="mailto:kaushikholla@outlook.com" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/kaushik-holla" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.064 2.064 0 110-4.128 2.064 2.064 0 010 4.128zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/kaushik-holla" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://medium.com/@kholla29" target="_blank" rel="noopener" class="social-link" aria-label="Medium">
+          <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+        </a>
       </div>
-      
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <p>You can also find my personal email, LinkedIn and GitHub below too.</p>
-        </div>
-      </div>
-     
-      <!-- Email, LinkedIn, and GitHub links -->
-      <div class="row">
-      
-        <div class="col-4 col-sm-4 col-lg-2 offset-lg-3 text-center">
-          <a href="mailto:kaushikholla29@gmail.com">
-            <i class="fa fa-envelope fa-4x sr-icons"></i>
-          </a>
-          <p><a href="mailto:kaushikholla29@gmail.com">Email</a></p>
-        </div>
-        
-        <div class="col-4 col-sm-4 col-lg-2 text-center">
-          <a target="_blank" href="https://www.linkedin.com/in/kaushik-holla/">
-            <i class="fa fa-linkedin-square fa-4x sr-icons"></i>
-          </a>
-          <p><a target="_blank" href="https://www.linkedin.com/in/kaushik-holla/">LinkedIn</a></p>
-        </div>
-        
-        <div class="col-4 col-sm-4 col-lg-2 text-center">
-          <a target="_blank" href="https://github.com/kaushik-holla">
-            <i class="fa fa-github-square fa-4x sr-icons"></i>
-          </a>
-          <p><a target="_blank" href="https://github.com/kaushik-holla">GitHub</a></p>
-        </div>
-      </div>
+      <p class="footer-copy">&copy; 2026 Kaushik Holla</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- Footer -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous"></script>
-  
-  <!-- Bootstrap 4.1 JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  
-  <!-- Plugin & Theme JavaScript (With Bootstrap 4 Update) -->
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/scrollreveal.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/creative.min.js"></script>
-  
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+            });
+          },
+          { threshold: 0.06, rootMargin: '0px 0px -30px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+      }
+
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
+
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+
+      function setMenuState(open) {
+        toggle.classList.toggle('open', open);
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      }
+
+      toggle.addEventListener('click', function () {
+        setMenuState(!links.classList.contains('open'));
+      });
+
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenuState(false); });
+      });
+
+      var sections = document.querySelectorAll('section[id]');
+      var navAnchors = document.querySelectorAll('.nav-links a');
+      var navH = 64;
+      function updateActive() {
+        var cur = '';
+        sections.forEach(function (s) { if (window.scrollY >= s.offsetTop - navH - 100) cur = s.id; });
+        navAnchors.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+      }
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    })();
+  </script>
+
 </body>
 </html>

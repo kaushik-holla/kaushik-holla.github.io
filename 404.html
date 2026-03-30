@@ -1,25 +1,61 @@
----
-permalink: /404.html
-layout: default
----
-
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Kaushik Holla</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2306b6d4'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='14' fill='%230a0a0a'%3EKH%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #ededed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .code {
+      font-size: clamp(4rem, 12vw, 7rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: #06b6d4;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    p {
+      color: #888;
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+    a {
+      color: #06b6d4;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 10px 24px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    a:hover {
+      background: rgba(6, 182, 212, 0.08);
+      color: #22d3ee;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="code">404</div>
+    <p>This page doesn't exist.</p>
+    <a href="/">Back to Home</a>
+  </div>
+</body>
+</html>
